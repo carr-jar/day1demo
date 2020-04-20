@@ -11,6 +11,7 @@
     <modules>
         <module>eurekaserve</module>
         <module>eureka-client</module>
+        <module>consul-server</module>
     </modules>
 
     <parent>
