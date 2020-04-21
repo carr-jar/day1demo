@@ -12,6 +12,9 @@
         <module>eurekaserve</module>
         <module>eureka-client</module>
         <module>consul-server</module>
+        <module>service-user-interface</module>
+        <module>service-user</module>
+        <module>service-order</module>
     </modules>
 
     <parent>
@@ -37,4 +40,11 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 </project>
