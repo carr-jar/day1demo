@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 指定服务名称
+ * feign客户端调用用户服务接口
  */
 @FeignClient(name = "service-user")
 public interface UserFeignClient {
