@@ -24,9 +24,11 @@ public class RibbonConfig {
      * 指定负载均衡算法
      * RoundRobinRule 轮询
      * RandomRule 随机
+     * BestAvailableRule当高并发选择最空闲的服务
+     * WeightedResponseTimeRule权重
      * @return
      */
     public IRule iRule(){
-        return new RandomRule();
+        return new RoundRobinRule();
 }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 指定服务名称
  * feign客户端调用用户服务接口
  */
-@FeignClient(name = "service-user")
+@FeignClient(name = "service-user"/*,fallback = UserFeignFallback.class*/)
 public interface UserFeignClient {
     @RequestMapping("/user/getUserById")
     public User getUserById(@RequestParam("id") Integer id);

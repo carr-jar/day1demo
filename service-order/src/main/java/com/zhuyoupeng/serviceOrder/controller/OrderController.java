@@ -1,6 +1,7 @@
 package com.zhuyoupeng.serviceOrder.controller;
 
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.zhuyoupeng.serviceOrder.feign.UserFeignClient;
 import com.zhuyoupeng.serviceOrder.service.OrderService;
 import com.zhuyoupeng.serviceUserInterface.Order;
@@ -34,6 +35,7 @@ public class OrderController {
     }
 
     @RequestMapping("getOrderById2")
+    @HystrixCommand(fallbackMethod = "getUserByIdFallback")
     public Order getOrderById2(@RequestParam("id") Integer id){
         Order order = service.getOrderById(id);
         User user = userFeignClient.getUserById(id);
@@ -53,6 +55,17 @@ public class OrderController {
         user1.setId(id);
         User user = userFeignClient.getUserByUser(user1);
         order.setUsername(user.getUsername());
+        return order;
+    }
+
+    /**
+     * 方法参数与getOrderById方法参数相同
+     * @param id
+     * @return
+     */
+    public Order getUserByIdFallback(Integer id){
+        Order order = service.getOrderById(id);
+        order.setUsername("熔断熔断");
         return order;
     }
 }
