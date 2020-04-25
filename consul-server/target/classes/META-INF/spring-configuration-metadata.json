@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "config",
+      "type": "com.zhuyoupeng.consulserver.config.ConsulConfigInfo",
+      "sourceType": "com.zhuyoupeng.consulserver.config.ConsulConfigInfo"
+    }
+  ],
+  "properties": [
+    {
+      "name": "config.info",
+      "type": "java.lang.String",
+      "sourceType": "com.zhuyoupeng.consulserver.config.ConsulConfigInfo"
+    },
+    {
+      "name": "config.name",
+      "type": "java.lang.String",
+      "sourceType": "com.zhuyoupeng.consulserver.config.ConsulConfigInfo"
+    }
+  ],
+  "hints": []
+}

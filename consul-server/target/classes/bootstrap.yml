@@ -1,0 +1,56 @@
+server:
+  port: 97
+spring:
+  application:
+    name: consul-client
+  profiles:
+    active: test
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+
+management:
+  server:
+    port: 9001
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+---
+spring:
+  profiles: dev
+  cloud:
+    consul:
+      config:
+        #是否启用配置中心
+        enabled: true
+        #配置格式
+        format: yaml
+        #设置所在目录
+        prefix: config
+        #分隔符
+        profile-separator: ':'
+        data-key: data
+
+---
+spring:
+  profiles: test
+  cloud:
+    consul:
+      config:
+        #是否启用配置中心
+        enabled: true
+        #配置格式
+        format: yaml
+        #设置所在目录
+        prefix: config
+        #分隔符
+        profile-separator: ':'
+        data-key: data
