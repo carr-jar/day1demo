@@ -11,7 +11,10 @@ spring:
           enabled: true
   profiles:
     active: route,cors
-
+  redis:
+    host: 192.168.152.128
+    port: 6379
+    database: 0
 eureka:
   client:
     service-url:
@@ -31,6 +34,11 @@ spring:
           #去除前缀
           filters:
             - StripPrefix=1
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@hostAddrKeyResolver}'
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 3
           #gateway网关的唯一标识
         - id: userService
           #后端微服务的名称，和注册中心的名称一致

@@ -1,0 +1,16 @@
+server:
+  port: 999
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          #配置github
+          uri: https://github.com/carr-jar/day1demo.git
+          #配置搜索目录
+          search-paths:
+            - configfiles
+      #配置分支
+      label: spring-cloud-config
